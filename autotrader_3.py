@@ -745,8 +745,8 @@ if __name__ == "__main__":
             if len(data):
                 
                 # txt = f"{data.get("code")} : {data.get("trade_price")} ({data.get('change_rate'):.2f}%)"
-                print(data.get("code"), "",  data.get("trade_price"), "",  data.get('change_rate'), "")
-                
+                print(data.get("code"), " ",  data.get("trade_price"), " (",  round(data.get('change_rate'),2), "% )")
+                print(trader.able_buy_balance_for_one_coin,"원"," ", trader.buy_able_cnt,"개 매수가능")
                 
                 
                 now =  datetime.fromtimestamp(int(data['timestamp'] / 1000))
@@ -794,7 +794,7 @@ if __name__ == "__main__":
                     
                     elif checking_dict['trade_status']== '보유':
                         
-                        target_sell_cond = checking_dict['target_price'] <= checking_dict['cur_price']
+                        target_sell_cond = checking_dict['target_price'] > checking_dict['cur_price']
                         # 매도하기 ( 봉의 종가 기준(봉시간의 3/4 이후에만 적용). , 또는 급락(정의필요)
                             
                             ## 보유종목종 여기서 최고가에서 현재가까지 떨어지는 시간체크해서 급락이면 매도.
